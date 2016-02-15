@@ -82,9 +82,9 @@ paths:
       parameters:
       # An example parameter that is in query and is required
         -
-          name: battleId
+          name: versusId
           in: path
-          description: The battle's Id
+          description: The versus's Id
           required: true
           type: string
         - name: fighterId
@@ -103,9 +103,9 @@ paths:
       parameters:
       # An example parameter that is in query and is required
         -
-          name: battleId
+          name: versusId
           in: path
-          description: The battle's Id
+          description: The versus's Id
           required: true
           type: string
         -
@@ -172,6 +172,14 @@ paths:
     post:
       summary: add a knockout stage to the tournament.
       description: add a knowckout stage to the tournament.
+      parameters:
+      # An example parameter that is in query and is required
+        -
+          name: tournamentId
+          in: path
+          description: The tournament's Id
+          required: true
+          type: string
       responses:
         200:
           description: OK
