@@ -11,9 +11,12 @@ info:
 ################################################################################
 #                                           Paths                              #
 ################################################################################
+
+          
+
 paths:
   # This is a path endpoint. Change it.
-  /user/{username}:
+  /fighter/{userId}:
     # This is a HTTP operation
     get:
       # Describe this verb here. Note: you can use markdown
@@ -23,9 +26,9 @@ paths:
       parameters:
         # An example parameter that is in query and is required
         -
-          name: username
+          name: userId
           in: path
-          description: The user's username
+          description: The user's Id
           required: true
           type: string
       # Expected responses for this operation:
@@ -37,9 +40,143 @@ paths:
           # Use JSON Schema format
           schema:
             $ref: '#/definitions/User'
-              
-              
 
+
+  /fighter:
+    post:
+      summary: create a fighter
+      description: |
+        create a fighter
+      responses:
+        200:
+          description: OK
+  
+  /versus:
+    post:
+      summary: Create a single versus battle  
+      description: Create a single versus battle
+      responses:
+        200:
+          description: OK
+  
+  /versus/{versusId}:
+    get:
+      summary: get a versus 
+      description: get a versus
+      parameters:
+      # An example parameter that is in query and is required
+        -
+          name: versusId
+          in: path
+          description: The versus Id
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+    
+  /versus/{versusId}/leftcorner/{fighterId}:
+    put:
+      summary: add a fighter to the left corner 
+      description: add a fighter to a left corner
+      parameters:
+      # An example parameter that is in query and is required
+        -
+          name: battleId
+          in: path
+          description: The battle's Id
+          required: true
+          type: string
+        - name: fighterId
+          in: path
+          description: The fighter's Id
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+    
+  /versus/{versusId}/rightcorner/{fighterId}:
+    put:
+      summary: add a fighter to the right corner 
+      description: add a fighter to a right corner
+      parameters:
+      # An example parameter that is in query and is required
+        -
+          name: battleId
+          in: path
+          description: The battle's Id
+          required: true
+          type: string
+        -
+          name: fighterId
+          in: path
+          description: The fighter's Id
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+          
+    
+  /brawl:
+    post:
+      summary: create a brawl (aka armageddon or seven to Smoke) 
+      description: create a brawl (aka armageddon)
+      responses:
+        200:
+          description: OK
+    
+  /brawl/{brawlId}:
+    get:
+      summary: get a brawlId 
+      description: get a brawlId
+      parameters:
+      # An example parameter that is in query and is required
+        -
+          name: brawlId
+          in: path
+          description: The brawl's Id
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+  
+  
+  /tournament:
+    post:
+      summary: Create a tournament.
+      description: Create a tournament. 
+      responses:
+        200:
+          description: OK
+    
+  /tournament/{tournamentId}:
+    get:
+      summary: retrieve a tournament
+      description: retrieve a tournament 
+      parameters:
+      # An example parameter that is in query and is required
+        -
+          name: tournamentId
+          in: path
+          description: The tournament's Id
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+  
+  /tournament/{tournamentId}/knockoutstage:
+    post:
+      summary: add a knockout stage to the tournament.
+      description: add a knowckout stage to the tournament.
+      responses:
+        200:
+          description: OK
+    
+  
 ################################################################################
 #                                 Definitions                                  #
 ################################################################################
@@ -119,4 +256,3 @@ definitions:
         type: integer
       countryName:
         type: string
-    
